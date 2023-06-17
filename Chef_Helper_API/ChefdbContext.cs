@@ -1,0 +1,63 @@
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
+
+namespace Chef_Helper_API;
+
+public partial class ChefdbContext : DbContext
+{
+    public ChefdbContext()
+    {
+    }
+
+    public ChefdbContext(DbContextOptions<ChefdbContext> options)
+        : base(options)
+    {
+    }
+
+    public virtual DbSet<Recipe> Recipes { get; set; }
+
+    public virtual DbSet<Warehouse> Warehouses { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Data Source=DESKTOP-PV4HL9E\\MSSQLSERVER01;Initial Catalog=CHEFDB;Integrated Security=True;Encrypt=False;");
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Recipe>(entity =>
+        {
+            entity.HasKey(e => e.RecipeName).HasName("PK__RECIPES__9EFE16E84CFA31ED");
+
+            entity.ToTable("RECIPES");
+
+            entity.Property(e => e.RecipeName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.CalorieValue)
+                .HasMaxLength(10)
+                .IsUnicode(false);
+            entity.Property(e => e.DishWeight)
+                .HasMaxLength(10)
+                .IsUnicode(false);
+            entity.Property(e => e.IngredientsNeeded)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<Warehouse>(entity =>
+        {
+            entity.HasKey(e => e.BoxNumber).HasName("PK__WAREHOUS__95A0B25921301404");
+
+            entity.ToTable("WAREHOUSE");
+
+            entity.Property(e => e.IngredientName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+        });
+
+        OnModelCreatingPartial(modelBuilder);
+    }
+
+    partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+}
