@@ -15,9 +15,9 @@ public partial class ChefdbContext : DbContext
     {
     }
 
-    public virtual DbSet<Recipe> Recipes { get; set; }
+    public virtual DbSet<Recipes> Recipes { get; set; }
 
-    public virtual DbSet<Warehouse> Warehouses { get; set; }
+    public virtual DbSet<Warehouse> Warehouse { get; set; }
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -25,7 +25,7 @@ public partial class ChefdbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Recipe>(entity =>
+        modelBuilder.Entity<Recipes>(entity =>
         {
             entity.HasKey(e => e.RecipeName).HasName("PK__RECIPES__9EFE16E84CFA31ED");
 
