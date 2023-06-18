@@ -8,6 +8,11 @@ namespace Chef_Helper_API.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-      
+        public readonly ChefdbContext _dbContext;
+
+        public ValuesController(ChefdbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
     }
 }
