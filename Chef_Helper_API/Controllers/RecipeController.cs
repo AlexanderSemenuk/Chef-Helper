@@ -1,7 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 
 namespace Chef_Helper_API.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class RecipeController : Controller
     {
         public readonly ChefdbContext _dbContext;
@@ -10,7 +14,7 @@ namespace Chef_Helper_API.Controllers
             _dbContext = dbContext;
         }
         // GET: api/Recipe
-        [HttpGet]
+        [HttpGet("/Recipes")]
         public IActionResult Get()
         {
             var recipes = _dbContext.Recipes.ToList();
@@ -18,10 +22,10 @@ namespace Chef_Helper_API.Controllers
         }
 
         // GET: api/Recipe/5
-        [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        [HttpGet("/RecipeByName")]
+        public IActionResult Get(string name)
         {
-            var recipe = _dbContext.Recipes.Find(id);
+            var recipe = _dbContext.Recipes.Find(name);
             if (recipe == null)
             {
                 return NotFound();
@@ -33,16 +37,45 @@ namespace Chef_Helper_API.Controllers
         [HttpPost]
         public IActionResult Post(Recipes recipe)
         {
+            // Разделяем список ингредиентов, указанных в поле IngredientsNeeded, по запятой
+            var ingredientsList = recipe.IngredientsNeeded?.Split(new[] { ", " }, StringSplitOptions.RemoveEmptyEntries);
+
+            if (ingredientsList != null && ingredientsList.Length > 0)
+            {
+                // Приводим все названия ингредиентов к нижнему регистру
+                var lowercaseIngredients = ingredientsList.Select(ingredient => ingredient.Split(' ')[1].Trim().ToLower());
+
+                // Получаем все названия ингредиентов в таблице Warehouse в нижнем регистре
+                var warehouseIngredients = _dbContext.Warehouse.Select(w => w.IngredientName.ToLower()).ToList();
+
+                // Проверяем наличие каждого ингредиента в списке Warehouse
+                foreach (var ingredient in lowercaseIngredients)
+                {
+                    if (!warehouseIngredients.Contains(ingredient))
+                    {
+                        // Ингредиент не найден в таблице Warehouse
+                        return BadRequest($"Ингредиент '{ingredient}' отсутствует в таблице Warehouse.");
+                    }
+                }
+            }
+            else
+            {
+                // Список ингредиентов пуст или не указан
+                return BadRequest("Список ингредиентов пуст или не указан.");
+            }
+
+
+
             _dbContext.Recipes.Add(recipe);
             _dbContext.SaveChanges();
             return Ok();
         }
 
         // PUT: api/Recipe/5
-        [HttpPut("{id}")]
-        public IActionResult Put(int id, Recipes updatedRecipe)
+        [HttpPut]
+        public IActionResult Put(string name, Recipes updatedRecipe)
         {
-            var recipeToUpdate = _dbContext.Recipes.Find(id);
+            var recipeToUpdate = _dbContext.Recipes.Find(name);
             if (recipeToUpdate == null)
             {
                 return NotFound();
@@ -58,10 +91,10 @@ namespace Chef_Helper_API.Controllers
         }
 
         // DELETE: api/Recipe/5
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        [HttpDelete]
+        public IActionResult Delete(string name)
         {
-            var recipeToDelete = _dbContext.Recipes.Find(id);
+            var recipeToDelete = _dbContext.Recipes.Find(name);
             if (recipeToDelete == null)
             {
                 return NotFound();

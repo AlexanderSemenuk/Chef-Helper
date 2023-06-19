@@ -6,27 +6,17 @@ using Chef_Helper_API.Controllers;
 using Microsoft.EntityFrameworkCore;
 
 
+
 namespace Chef_Helper_API
 {
     public class Program
     {
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-      Host.CreateDefaultBuilder(args)
-          .ConfigureServices((hostContext, services) =>
-          {
-              // Добавляем DbContext в DI-контейнер
-              services.AddDbContext<ChefdbContext>(options =>
-                  options.UseSqlServer(hostContext.Configuration.GetConnectionString("DefaultConnection")));
-
-              // Добавляем контроллеры в DI-контейнер
-              services.AddControllers();
-          });
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
+            builder.Services.AddDbContext<ChefdbContext>();
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -48,12 +38,6 @@ namespace Chef_Helper_API
             app.MapControllers();
 
             app.Run();
-
-
-            using (ChefdbContext db = new ChefdbContext()) { 
-                db.Database.EnsureCreated();
-                db.Database.CanConnect();
-            }
         }
 
     }

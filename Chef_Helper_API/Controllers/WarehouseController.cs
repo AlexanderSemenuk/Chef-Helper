@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System;
+using System.Net;
+using System.Net.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 
@@ -23,10 +26,10 @@ namespace Chef_Helper_API.Controllers
         }
 
         // GET: api/Warehouse/5
-        [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        [HttpGet("{boxNumber}")]
+        public IActionResult Get(int boxNumber)
         {
-            var warehouse = _dbContext.Warehouse.Find(id);
+            var warehouse = _dbContext.Warehouse.Find(boxNumber);
             if (warehouse == null)
             {
                 return NotFound();
@@ -35,25 +38,40 @@ namespace Chef_Helper_API.Controllers
         }
 
         // POST: api/Warehouse
-        [HttpPost]
-        public IActionResult Post(Warehouse warehouse)
+        [HttpPost("{ingredientName}, {quantity}")]
+        public IActionResult Post(Warehouse warehouse, int quantity, string ingredientName)
         {
-            _dbContext.Warehouse.Add(warehouse);
-            _dbContext.SaveChanges();
-            return Ok();
+            try
+            {
+                Warehouse newWarehouse = new Warehouse
+                {
+                    IngredientName = ingredientName,
+                    WarehouseQuantity = quantity,
+                };
+                _dbContext.Warehouse.Add(newWarehouse);
+                _dbContext.SaveChanges();
+                return Ok(newWarehouse);
+            }
+            catch (Exception ex)
+            {
+                {
+                    // Обработка ошибок при добавлении записи
+                    return Content(ex.Message);
+                }
+            }
         }
 
         // PUT: api/Warehouse/5
-        [HttpPut("{id}")]
-        public IActionResult Put(int id, Warehouse updatedWarehouse)
+        [HttpPut("{boxNumber}, {ingredientName}, {quantity}")]
+        public IActionResult Put(int boxNumber, Warehouse updatedWarehouse, string ingredientName, int quantity)
         {
-            var warehouseToUpdate = _dbContext.Warehouse.Find(id);
+            var warehouseToUpdate = _dbContext.Warehouse.Find(boxNumber);
             if (warehouseToUpdate == null)
             {
                 return NotFound();
             }
-
-            warehouseToUpdate.BoxNumber = updatedWarehouse.BoxNumber;
+            updatedWarehouse.IngredientName = ingredientName;
+            updatedWarehouse.WarehouseQuantity = quantity;
             warehouseToUpdate.IngredientName = updatedWarehouse.IngredientName;
             warehouseToUpdate.WarehouseQuantity = updatedWarehouse.WarehouseQuantity;
 
@@ -62,10 +80,10 @@ namespace Chef_Helper_API.Controllers
         }
 
         // DELETE: api/Warehouse/5
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        [HttpDelete("{boxNumber}")]
+        public IActionResult Delete(int boxNumber)
         {
-            var warehouseToDelete = _dbContext.Warehouse.Find(id);
+            var warehouseToDelete = _dbContext.Warehouse.Find(boxNumber);
             if (warehouseToDelete == null)
             {
                 return NotFound();
