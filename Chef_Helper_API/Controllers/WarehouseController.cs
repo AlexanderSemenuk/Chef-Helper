@@ -6,7 +6,7 @@ namespace Chef_Helper_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class WarehouseController : ControllerBase
+    public class WarehouseController : Controller
     {
         public readonly ChefdbContext _dbContext;
 
@@ -15,7 +15,7 @@ namespace Chef_Helper_API.Controllers
             _dbContext = dbContext;
         }
         // GET: api/Warehouse
-        [HttpGet]
+        [HttpGet("/Warehouse")]
         public IActionResult Get()
         {
             var warehouses = _dbContext.Warehouse.ToList();

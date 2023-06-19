@@ -2,7 +2,7 @@
 
 namespace Chef_Helper_API.Controllers
 {
-    public class RecipeController : ControllerBase
+    public class RecipeController : Controller
     {
         public readonly ChefdbContext _dbContext;
         public RecipeController(ChefdbContext dbContext)

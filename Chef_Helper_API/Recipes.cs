@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Chef_Helper_API;
 
-public partial class Recipe
+public partial class Recipes
 {
     public string RecipeName { get; set; } = null!;
 
