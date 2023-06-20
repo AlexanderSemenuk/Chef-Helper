@@ -8,11 +8,13 @@ public partial class ChefdbContext : DbContext
 {
     public ChefdbContext()
     {
+        Database.EnsureCreated();
     }
 
     public ChefdbContext(DbContextOptions<ChefdbContext> options)
         : base(options)
     {
+        Database.EnsureCreated();
     }
 
     public virtual DbSet<Recipes> Recipes { get; set; }
@@ -20,8 +22,9 @@ public partial class ChefdbContext : DbContext
     public virtual DbSet<Warehouse> Warehouse { get; set; }
 
 
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Data Source=DESKTOP-PV4HL9E\\MSSQLSERVER01;Initial Catalog=CHEFDB;Integrated Security=True;Encrypt=False;");
+        => optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=ChefTestDb;Integrated Security=True;Encrypt=False;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
