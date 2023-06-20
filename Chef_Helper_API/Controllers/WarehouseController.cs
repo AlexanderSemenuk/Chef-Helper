@@ -26,10 +26,10 @@ namespace Chef_Helper_API.Controllers
         }
 
         // GET: api/Warehouse/5
-        [HttpGet("{boxNumber}")]
-        public IActionResult Get(int boxNumber)
+        [HttpGet("{ingredientName}")]
+        public IActionResult Get(string ingredientName)
         {
-            var warehouse = _dbContext.Warehouse.Find(boxNumber);
+            var warehouse = _dbContext.Warehouse.Where((box)=> box.IngredientName == ingredientName);
             if (warehouse == null)
             {
                 return NotFound();
