@@ -104,6 +104,108 @@ namespace Chef_Helper_API.Controllers
             _dbContext.SaveChanges();
             return Ok();
         }
+        [HttpGet]
+        public IActionResult GetRecipesWithAvailableIngredients()
+        {
+            // Получаем все рецепты
+            List<Chef_Helper_API.Recipes> recipes = _dbContext.Recipes.ToList();
+
+            // Создаем словарь для хранения количества доступных ингредиентов на складе
+            Dictionary<string, int> availableIngredients = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+
+            // Получаем все записи ингредиентов со склада
+            List<Chef_Helper_API.Warehouse> warehouseIngredients = _dbContext.Warehouse.ToList();
+
+            foreach (var warehouseIngredient in warehouseIngredients)
+            {
+                string ingredientName = warehouseIngredient.IngredientName.Trim();
+                int quantity = warehouseIngredient.WarehouseQuantity ?? 0;
+
+                if (availableIngredients.ContainsKey(ingredientName))
+                {
+                    // Если ингредиент уже присутствует в словаре, добавляем количество
+                    availableIngredients[ingredientName] += quantity;
+                }
+                else
+                {
+                    // Если ингредиент отсутствует в словаре, добавляем его с количеством
+                    availableIngredients.Add(ingredientName, quantity);
+                }
+            }
+
+            // Формируем список рецептов, которые можно приготовить
+            List<RecipeWithQuantity> recipesWithAvailableIngredients = new List<RecipeWithQuantity>();
+
+            foreach (var recipe in recipes)
+            {
+                string[] ingredientsList = recipe.IngredientsNeeded?.Split(new[] { ", " }, StringSplitOptions.RemoveEmptyEntries);
+
+                if (ingredientsList != null && ingredientsList.Length > 0)
+                {
+                    bool canCookRecipe = true;
+
+                    foreach (var ingredientItem in ingredientsList)
+                    {
+                        string[] parts = ingredientItem.Split(' ');
+
+                        if (parts.Length != 2)
+                        {
+                            // Неверный формат записи ингредиента
+                            canCookRecipe = false;
+                            break;
+                        }
+
+                        string ingredientName = parts[1].Trim();
+                        int requiredQuantity = int.Parse(parts[0]);
+
+                        if (!availableIngredients.TryGetValue(ingredientName, out var availableQuantity) || requiredQuantity > availableQuantity)
+                        {
+                            // Ингредиент отсутствует на складе или его количество недостаточно
+                            canCookRecipe = false;
+                            break;
+                        }
+                    }
+
+                    if (canCookRecipe)
+                    {
+                        // Рецепт можно приготовить, добавляем его в список с указанием доступного количества порций
+                        recipesWithAvailableIngredients.Add(new RecipeWithQuantity
+                        {
+                            RecipeName = recipe.RecipeName,
+                            AvailableQuantity = CalculateAvailableRecipeQuantity(ingredientsList, availableIngredients)
+                        });
+                    }
+                }
+            }
+
+            return Ok(recipesWithAvailableIngredients);
+        }
+
+        // Метод для вычисления доступного количества порций рецепта
+        private int CalculateAvailableRecipeQuantity(string[] ingredientsList, Dictionary<string, int> availableIngredients)
+        {
+            int availableQuantity = int.MaxValue;
+
+            foreach (var ingredientItem in ingredientsList)
+            {
+                string[] parts = ingredientItem.Split(' ');
+                string ingredientName = parts[1].Trim();
+                int requiredQuantity = int.Parse(parts[0]);
+
+                if (availableIngredients.TryGetValue(ingredientName, out var ingredientQuantity))
+                {
+                    int possibleQuantity = ingredientQuantity / requiredQuantity;
+                    if (possibleQuantity < availableQuantity)
+                    {
+                        availableQuantity = possibleQuantity;
+                    }
+                }
+            }
+
+            return availableQuantity;
+        }
+
+
 
     }
 }
