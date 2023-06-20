@@ -115,3 +115,66 @@ footer {
     height: 30px;
     width: 30px;
 }
+.food {
+    width: 600px;
+    height: 600px;
+}
+
+.left-circle,
+.right-circle {
+    position: absolute;
+    top: 90px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: gold;
+    display: flex;
+}
+
+.left-circle {
+    left: 150px;
+}
+
+.right-circle {
+    right: 150px;
+}
+
+.top-name {
+    text-align: center;
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.under-name {
+    color: grey;
+    text-align: center;
+    font-size: 32px;
+    margin-top: 5px;
+}
+
+.underline-name {
+    color: gold;
+    text-align: center;
+    font-size: 32px;
+    margin-top: 5px;
+}
+
+.underline {
+    border: none;
+    border-top: 3px solid gold;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.borderless-table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 0 auto;
+}
+
+    .borderless-table th,
+    .borderless-table td {
+        border: none;
+        padding: 20px;
+        border-top: 3px solid grey;
+    }
