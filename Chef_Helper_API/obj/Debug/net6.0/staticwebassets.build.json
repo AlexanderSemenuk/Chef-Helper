@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "slytRJQIgawL2W+uj92OciRWJ32OWKF39MJDIg6HEy4=",
+  "Source": "Chef_Helper_API",
+  "BasePath": "_content/Chef_Helper_API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
