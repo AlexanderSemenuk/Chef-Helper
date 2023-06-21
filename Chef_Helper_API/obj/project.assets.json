@@ -229,11 +229,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\maksi\\Source\\Repos\\Chef-Helper\\Chef_Helper_API\\Chef_Helper_API.csproj",
+      "projectUniqueName": "C:\\Users\\maksi\\source\\repos\\Chef-Helper\\Chef_Helper_API\\Chef_Helper_API.csproj",
       "projectName": "Chef_Helper_API",
-      "projectPath": "C:\\Users\\maksi\\Source\\Repos\\Chef-Helper\\Chef_Helper_API\\Chef_Helper_API.csproj",
+      "projectPath": "C:\\Users\\maksi\\source\\repos\\Chef-Helper\\Chef_Helper_API\\Chef_Helper_API.csproj",
       "packagesPath": "C:\\Users\\maksi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\maksi\\Source\\Repos\\Chef-Helper\\Chef_Helper_API\\obj\\",
+      "outputPath": "C:\\Users\\maksi\\source\\repos\\Chef-Helper\\Chef_Helper_API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\maksi\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -244,6 +244,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -286,7 +287,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
       }
     }
   }
