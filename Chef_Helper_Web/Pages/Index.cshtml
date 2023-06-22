@@ -1,10 +1,40 @@
 ﻿@page
-@model IndexModel
+@using Chef_Helper_API;
+@model List<Recipes>;
 @{
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<main class="main-container">
+    <div class="clamp">
+        <div class="clamp-inner">
+        </div>
+    </div>
+    <div class="sheet">
+        <div class="left-circle"></div>
+        <div class="right-circle"></div>
+        <p class="top-name">MENU</p>
+        <hr class="underline">
+        <p class="underline-name ">Food and more</p>
+        <table class="borderless-table">
+            <tr>
+                <th>Название</th>
+                <th>Калорийность</th>
+                <th>Продукты</th>
+                <th>Вес одной порции</th>
+            </tr>
+            @foreach (var recipe in Model)
+            {
+                <tr>
+                    <th>@recipe.RecipeName</th>
+                    <th>@recipe.CalorieValue</th>
+                    <th>@recipe.IngredientsNeeded</th>
+                    <th>@recipe.DishWeight</th>
+                </tr>
+            }
+        </table>
+    </div>
+    </>
+    
+    <div class="main-border"></div>
+</main>
