@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LC/lAOOcNgvhHqI3fPkhjD4P5oDe024GdQU9I3CDckDuPyWCvrI6i8bihsS6w6lUUKX8+J19L6KokD5/BfmkgQ==",
+  "dgSpecHash": "YRqN8XBCrqK6RM00PNc+SiR0h9J8kGRbOIP3rSc6dhyL/DBYdpyq58nzMT+RjvDMWHcKDURq7IQIo8eQvJ28zg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Oleksandr\\source\\repos\\Chef_Helper\\Chef_Helper_API\\Chef_Helper_API.csproj",
+  "projectFilePath": "C:\\Users\\Oleksandr\\source\\repos\\Chef_Helper\\Chef-Helper\\Chef_Helper_API\\Chef_Helper_API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Oleksandr\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\Oleksandr\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
