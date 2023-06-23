@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Oleksandr\\source\\repos\\Chef_Helper\\Chef_Helper_API\\Chef_Helper_API.csproj": {}
+    "C:\\Users\\Oleksandr\\source\\repos\\Chef-Helper\\Chef_Helper_API\\Chef_Helper_API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Oleksandr\\source\\repos\\Chef_Helper\\Chef_Helper_API\\Chef_Helper_API.csproj": {
+    "C:\\Users\\Oleksandr\\source\\repos\\Chef-Helper\\Chef_Helper_API\\Chef_Helper_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Oleksandr\\source\\repos\\Chef_Helper\\Chef_Helper_API\\Chef_Helper_API.csproj",
+        "projectUniqueName": "C:\\Users\\Oleksandr\\source\\repos\\Chef-Helper\\Chef_Helper_API\\Chef_Helper_API.csproj",
         "projectName": "Chef_Helper_API",
-        "projectPath": "C:\\Users\\Oleksandr\\source\\repos\\Chef_Helper\\Chef_Helper_API\\Chef_Helper_API.csproj",
+        "projectPath": "C:\\Users\\Oleksandr\\source\\repos\\Chef-Helper\\Chef_Helper_API\\Chef_Helper_API.csproj",
         "packagesPath": "C:\\Users\\Oleksandr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Oleksandr\\source\\repos\\Chef_Helper\\Chef_Helper_API\\obj\\",
+        "outputPath": "C:\\Users\\Oleksandr\\source\\repos\\Chef-Helper\\Chef_Helper_API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
