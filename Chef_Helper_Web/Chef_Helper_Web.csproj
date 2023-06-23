@@ -15,4 +15,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Chef_Helper_API\Chef_Helper_API.csproj" />
+  </ItemGroup>
+
 </Project>
