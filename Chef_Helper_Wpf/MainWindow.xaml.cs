@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Chef_Helper_API;
+using Chef_Helper_API.Models;
+using Chef_Helper_API.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +23,41 @@ namespace Chef_Helper_Wpf
     /// </summary>
     public partial class MainWindow : Window
     {
+        public List<Food> recept { get; set; }
+        private RecipesService recipesService;
         public MainWindow()
         {
+            recept = getrecpt();
+            var dbContext = new ChefdbContext();
+            recipesService = new RecipesService(dbContext);
             InitializeComponent();
+
+        }
+
+        private List<Food>? getrecpt()
+        {
+            var list = new List<Food>();
+            if (recipesService != null)
+            {
+                foreach (var recept in recipesService.GetRecipes())
+                {
+                    list.Add(new Food()
+                    {
+                        recipeName = recept.RecipeName,
+                        ingredientsNeeded = recept.IngredientsNeeded,
+                        dishWeight = recept.DishWeight,
+                        calorieValue = recept.CalorieValue,
+                    });
+
+                }
+            }
+            return list;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            var recept = this.recept;
+            datagrid.DataContext = recept;
         }
     }
 }
