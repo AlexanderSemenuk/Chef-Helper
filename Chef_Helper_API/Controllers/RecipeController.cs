@@ -35,7 +35,7 @@ namespace Chef_Helper_API.Controllers
 
         // POST: api/Recipe
         [HttpPost]
-        public IActionResult Post(Recipes recipe)
+        public IActionResult Post([FromBody] Recipes recipe)
         {
             // Разделяем список ингредиентов, указанных в поле IngredientsNeeded, по запятой
             var ingredientsList = recipe.IngredientsNeeded?.Split(new[] { ", " }, StringSplitOptions.RemoveEmptyEntries);
@@ -64,7 +64,10 @@ namespace Chef_Helper_API.Controllers
                 return BadRequest("Список ингредиентов пуст или не указан.");
             }
 
-
+            string name = recipe.RecipeName;
+            string calories = recipe.CalorieValue;
+            string products = recipe.IngredientsNeeded;
+            string weight = recipe.DishWeight;
 
             _dbContext.Recipes.Add(recipe);
             _dbContext.SaveChanges();
