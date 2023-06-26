@@ -2,8 +2,10 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
-var adding = document.getElementById("adding");
-adding.addEventListener("click", getDataing);
+document.addEventListener("DOMContentLoaded", function () {
+    var adding = document.getElementById("adding");
+    adding.addEventListener("click", getDataing);
+});
 function getDataing() {
     var ingredientName = document.getElementById("ingredientNameInput").value;
     var ingredientQuantity = document.getElementById("ingredientQuantityInput").value;
@@ -36,8 +38,10 @@ function getDataing() {
             console.error(error);
         });
 }
-var addrecpt = document.getElementById("addrecpt");
-addrecpt.addEventListener("click", getDatarecpt);
+document.addEventListener("DOMContentLoaded", function () {
+    var addrecpt = document.getElementById("addrecpt");
+    addrecpt.addEventListener("click", getDatarecpt);
+});
 function getDatarecpt() {
     var receptName = document.getElementById("receptNameInput").value;
     var needQuantity = document.getElementById("needQuantityInput").value;
