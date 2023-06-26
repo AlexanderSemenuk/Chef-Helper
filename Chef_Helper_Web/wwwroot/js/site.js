@@ -36,3 +36,7 @@ function getDataing() {
             console.error(error);
         });
 }
+var addrecpt = document.getElementById("addrecpt");
+addrecpt.addEventListener("click", getDatarecpt);
+var dellrecpt = document.getElementById("dellrecpt");
+dellrecpt.addEventListener("click", getDatarecpt);

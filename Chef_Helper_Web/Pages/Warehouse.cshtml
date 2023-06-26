@@ -15,17 +15,18 @@
         <p class="underline-name ">Food and more</p>
         <table class="borderless-table">
             <tr>
+                <th>Номер коробки</th>
                 <th>Название</th>
-                <th>Калорийность</th>
-                <th>Продукты</th>
-                <th>вес одной порции</th>
+                <th>Количетсво продукта</th>
             </tr>
-            <tr>
-                <td>Блюдо 1</td>
-                <td>200 ккал</td>
-                <td>Ингредиенты 1, 2, 3</td>
-                <td>200г</td>
-            </tr>
+            @* @foreach (var recipe in RecipesService.GetRecipes())
+            {
+                <tr>
+                    <td>@recipe.RecipeName</td>
+                    <td>@recipe.CalorieValue</td>
+                    <td>@recipe.IngredientsNeeded</td>
+                </tr>
+            }*@
 
         </table>
 
