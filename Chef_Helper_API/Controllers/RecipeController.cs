@@ -64,11 +64,6 @@ namespace Chef_Helper_API.Controllers
                 return BadRequest("Список ингредиентов пуст или не указан.");
             }
 
-            string name = recipe.RecipeName;
-            string calories = recipe.CalorieValue;
-            string products = recipe.IngredientsNeeded;
-            string weight = recipe.DishWeight;
-
             _dbContext.Recipes.Add(recipe);
             _dbContext.SaveChanges();
             return Ok();

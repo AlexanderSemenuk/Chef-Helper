@@ -2,33 +2,37 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
- const addButton = document.getElementById("addButton");
+var adding = document.getElementById("adding");
+adding.addEventListener("click", getDataing);
+function getDataing() {
+    var ingredientName = document.getElementById("ingredientNameInput").value;
+    var ingredientQuantity = document.getElementById("ingredientQuantityInput").value;
 
-    addButton.addEventListener("click", () => {
-      const name = prompt("Введите название:");
-      const calories = prompt("Введите калории:");
-      const products = prompt("Введите продукты:");
-      const weight= prompt("Введите вес:");
-    });
-	const data = {
-	name: name,
-	calories: calories,
-	products: products
-	};
-	fetch("api/Recipe", {
-	method: "POST",
-	headers: {
-    "Content-Type": "application/json"
-	},
-	body: JSON.stringify(data)
-	})
-	.then(response => {
-    if (response.ok) {
-      console.log("Data successfully sent to ASP.NET backend.");
-    } else {
-      console.error("Error sending data to ASP.NET backend.");
-    }
-	})
-	.catch(error => {
-    console.error("Error sending data to ASP.NET backend:", error);
-	});
+    var data = {
+        ingredientName: ingredientName,
+        quantity: ingredientQuantity
+    };
+
+    fetch('api/warehouse', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Failed to add warehouse');
+            }
+        })
+        .then(result => {
+            // Обработка успешного ответа от сервера
+            console.log(result);
+        })
+        .catch(error => {
+            // Обработка ошибок
+            console.error(error);
+        });
+}

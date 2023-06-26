@@ -1,0 +1,40 @@
+﻿@page
+@model WarehouseModel
+@{
+    ViewData["Title"] = "Warehouse";
+}
+
+<main class="main-container1">
+    <div class="clamp">
+        <div class="clamp-inner">
+        </div>
+    </div>
+    <div class="sheet">
+        <p class="top-name">Warehouse</p>
+        <hr class="underline">
+        <p class="underline-name ">Food and more</p>
+        <table class="borderless-table">
+            <tr>
+                <th>Название</th>
+                <th>Калорийность</th>
+                <th>Продукты</th>
+                <th>вес одной порции</th>
+            </tr>
+            <tr>
+                <td>Блюдо 1</td>
+                <td>200 ккал</td>
+                <td>Ингредиенты 1, 2, 3</td>
+                <td>200г</td>
+            </tr>
+
+        </table>
+
+    </div>
+    <div class="button-container">
+        <button><a asp-area="" asp-page="/addring">Добавить</a></></button>
+        <button><a asp-area="" asp-page="/delling">Удалить</a></button>
+        <button><a asp-area="" asp-page="/Editor">Редактор</a></button>
+        <button>Подсчёт</button>
+        <button><a asp-area="" asp-page="/Index">Рецепты</a></button>
+    </div>
+</main>

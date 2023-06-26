@@ -1,15 +1,18 @@
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
-img.background {;
+
+img.background {
+    ;
     height: auto;
     position: fixed;
     top: 0;
     left: 0;
     filter: blur(0.6rem);
 }
-    body {
+
+body {
     margin: 0;
     padding: 0;
 }
@@ -18,16 +21,6 @@ img.background {;
     margin-left: 1000px;
 }
 
-.main-border {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 25px;
-    border: 4px solid silver;
-    box-sizing: border-box;
-}
 
 .main-container {
     margin: 100px auto;
@@ -41,6 +34,24 @@ img.background {;
     padding-left: 20px;
     padding-right: 20px;
     position: relative;
+    border: solid;
+    border-color: silver;
+}
+
+.main-container1 {
+    margin: 100px auto;
+    max-width: 1200px;
+    height: 900px;
+    overflow: auto;
+    background-color: orange;
+    border-radius: 25px;
+    padding-top: 100px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    position: relative;
+    border: solid;
+    border-color: silver;
 }
 
 .clamp {
@@ -63,15 +74,22 @@ img.background {;
     justify-content: center;
 }
 
-
+.add_form {
+    margin-top: 10px;
+    margin-left: 100px;
+    padding: 8px;
+}
 
 .sheet {
     background-color: #fff;
     padding: 40px 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-height: 90%;
     height: 90%;
     margin-top: -80px;
+    overflow: auto;
 }
+
 
 table {
     width: 100%;
@@ -92,10 +110,12 @@ footer {
     padding: 10px;
     text-align: center;
 }
+
 .github {
     height: 30px;
     width: 30px;
 }
+
 .food {
     width: 600px;
     height: 600px;
@@ -140,13 +160,14 @@ footer {
         padding: 20px;
         border-top: 3px solid grey;
     }
+
 .button-container {
     display: flex;
     justify-content: center;
     margin-top: 20px;
 }
 
-.button-container button {
+    .button-container button {
         background-color: #333;
         color: #fff;
         border: none;
@@ -155,8 +176,42 @@ footer {
         border-radius: 5px;
         font-size: 16px;
         cursor: pointer;
+    }
+
+        .button-container button:hover {
+            background-color: #555;
+        }
+.text {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
 }
 
-.button-container button:hover {
-            background-color: #555;
+    .text::placeholder {
+        color: #999;
+    }
+
+    .text:focus {
+        border-color: #0066ff;
+        box-shadow: 0 0 5px rgba(0, 102, 255, 0.3);
+    }
+.editor {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.editor:hover {
+        background-color: #45a049;
 }

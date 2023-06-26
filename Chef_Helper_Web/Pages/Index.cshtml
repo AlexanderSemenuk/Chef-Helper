@@ -1,9 +1,5 @@
 ﻿@page
 @model IndexModel
-@{
-    ViewData["Title"] = "Home page";
-}
-
 <main class="main-container">
     <div class="clamp">
         <div class="clamp-inner">
@@ -20,34 +16,26 @@
                 <th>Название</th>
                 <th>Калорийность</th>
                 <th>Продукты</th>
-                <th>вес одной порции</th>
+                <th>Вес одной порции</th>
+                <th></th>
             </tr>
-            <tr>
-                <td>Блюдо 1</td>
-                <td>200 ккал</td>
-                <td>Ингредиенты 1, 2, 3</td>
-                <td>200г</td>
-            </tr>
-            <tr>
-                <td>Блюдо 2</td>
-                <td>300 ккал</td>
-                <td>Ингредиенты 4, 5</td>
-                <td>300г</td>
-            </tr>
-            <tr>
-                <td>Блюдо 3</td>
-                <td>150 ккал</td>
-                <td>Ингредиенты 6, 7, 8, 9</td>
-                <td>150г</td>
-            </tr>
+@*            @foreach (var recipe in RecipesService.GetRecipes())
+            {
+                <tr>
+                    <td>@recipe.RecipeName</td>
+                    <td>@recipe.CalorieValue</td>
+                    <td>@recipe.IngredientsNeeded</td>
+                    <td>@recipe.DishWeight</td>
+                </tr>
+            }*@
         </table>
-
     </div>
     <div class="button-container">
-        <button id="addButton">Добавить</button>
-    <button>Редакт</button>
-    <button>Подсчёт</button>
-    <button>Склад</button>
+        <button><a asp-area="" asp-page="/addrecpt">Добавить</a></button>
+        <button><a asp-area="" asp-page="/dellrecpt">Удалить</a></button>
+        <button><a asp-area="" asp-page="/Editor">Редактор</a></button>
+        <button>Подсчёт</button>
+        <button><a asp-area="" asp-page="/Warehouse">Склад</a></button>
     </div>
     <div class="main-border"></div>
 </main>

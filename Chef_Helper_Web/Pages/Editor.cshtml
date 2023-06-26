@@ -1,0 +1,69 @@
+﻿@page
+@using Chef_Helper_API;
+@using Chef_Helper_API.Services
+@inject RecipesService RecipesService
+
+<main class="main-container">
+    <div class="clamp">
+        <div class="clamp-inner">
+        </div>
+    </div>
+    <div class="sheet">
+        <div class="left-circle"></div>
+        <div class="right-circle"></div>
+        <p class="top-name">EDIT</p>
+        <hr class="underline">
+        <p class="underline-name ">Food and more</p>
+        <div style="text-align:center">
+            <p>Какой рецепт хотите изменить</p>
+            <input type="text" class="text" id="recipeName" placeholder="Введите название" />
+            <button class="editor" id="foundRecipe">Найти</button>
+        </div>
+        <table class="borderless-table">
+            <tr id="inputRow" style="display: none;">
+                <td><input type="text" id="calories" class="text" placeholder="Введите калорийность" /></td>
+                <td><input type="text" id="ingredients" class="text" placeholder="Введите ингредиенты" /></td>
+                <td><input type="text" id="portionWeight" class="text" placeholder="Введите вес одной порции" /></td>
+                <td><button class="editor" id="edditRecipe">Сохранить</button></td>
+            </tr>
+        </table>
+    </div>
+    <div class="main-border"></div>
+</main>
+<script>
+    document.getElementById("foundRecipe").addEventListener("click", function () {
+        document.getElementById("inputRow").style.display = "table-row";
+        document.getElementById("showButton").style.display = "none";
+        var recipeName = document.getElementById("recipeName").value;
+        var calories = document.getElementById("calories").value;
+        var ingredients = document.getElementById("ingredients").value;
+        var portionWeight = document.getElementById("portionWeight").value;
+
+        // Здесь можно добавить проверку наличия рецепта в базе данных
+        var isRecipeExists = checkRecipeExists(recipeName);
+
+        if (isRecipeExists) {
+            // Рецепт существует, выполняем необходимые действия
+            document.getElementById("recipeNameOutput").value = recipeName;
+            document.getElementById("caloriesOutput").value = calories;
+            document.getElementById("ingredientsOutput").value = ingredients;
+            document.getElementById("portionWeightOutput").value = portionWeight;
+        } else {
+            // Рецепт не найден, выполняем соответствующие действия
+            alert("Рецепт не найден в базе данных.");
+            // Возможно, вы захотите сделать другие действия, например, очистить поля ввода или вывести сообщение об ошибке
+        }
+    });
+
+    function checkRecipeExists(recipeName) {
+        // Здесь вам нужно реализовать код для проверки наличия рецепта в базе данных
+        // Верните true, если рецепт существует, и false в противном случае
+        // Пример псевдокода:
+        // Если рецепт существует {
+        //    return true;
+        // } else {
+        //    return false;
+        // }
+    }
+
+</script>
