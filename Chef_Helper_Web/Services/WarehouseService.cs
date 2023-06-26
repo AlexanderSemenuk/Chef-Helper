@@ -36,7 +36,9 @@ namespace Chef_Helper_Web.Services
         }
         public async Task<Warehouse> Post(string ingredientName, int quantity)
         {
-            await _httpClient.PostAsJsonAsync($"api/Warehouse/{ingredientName}, {quantity}");
+            var response = await _httpClient.PostAsJsonAsync($"api/Warehouse/{ingredientName}, {quantity}" ,false);
+
+            return await response.Content.ReadFromJsonAsync<Warehouse>();
         }
         public async Task Delete(int boxNumber)
         {
