@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Chef_Helper_API.Models;
 using Microsoft.Data.SqlClient;
 
 namespace Chef_Helper_API.Controllers
@@ -39,7 +40,7 @@ namespace Chef_Helper_API.Controllers
 
         // POST: api/Warehouse
         [HttpPost("{ingredientName}, {quantity}")]
-        public IActionResult Post(Warehouse warehouse, int quantity, string ingredientName)
+        public IActionResult Post(int quantity, string ingredientName)
         {
             try
             {

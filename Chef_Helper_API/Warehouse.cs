@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Chef_Helper_API;
-
-public partial class Warehouse
+namespace Chef_Helper_API.Models
 {
-    public int BoxNumber { get; set; }
+    public class Warehouse
+    {
+        public int BoxNumber { get; set; }
 
-    public string? IngredientName { get; set; }
+        public string? IngredientName { get; set; }
 
-    public int? WarehouseQuantity { get; set; }
+        public int? WarehouseQuantity { get; set; }
+    }
+
+
 }
+

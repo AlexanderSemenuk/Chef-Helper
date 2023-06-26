@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
+using Chef_Helper_API.Models;
 
 namespace Chef_Helper_API.Controllers
 {
@@ -21,16 +22,17 @@ namespace Chef_Helper_API.Controllers
             return Ok(recipes);
         }
 
-        // GET: api/Recipe/5
-        [HttpGet("/RecipeByName")]
-        public IActionResult Get(string name)
+        // GET: api/Recipe/name
+        [HttpGet("{recipeName}")]
+        public IActionResult Get(string recipeName)
         {
-            var recipe = _dbContext.Recipes.Find(name);
-            if (recipe == null)
+            var recipes = _dbContext.Recipes.Where(recipe => recipe.RecipeName.Contains(recipeName));
+
+            if (recipes == null)
             {
                 return NotFound();
             }
-            return Ok(recipe);
+            return Ok(recipes);
         }
 
         // POST: api/Recipe
@@ -108,13 +110,13 @@ namespace Chef_Helper_API.Controllers
         public IActionResult GetRecipesWithAvailableIngredients()
         {
             // Получаем все рецепты
-            List<Chef_Helper_API.Recipes> recipes = _dbContext.Recipes.ToList();
+            List<Chef_Helper_API.Models.Recipes> recipes = _dbContext.Recipes.ToList();
 
             // Создаем словарь для хранения количества доступных ингредиентов на складе
             Dictionary<string, int> availableIngredients = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
 
             // Получаем все записи ингредиентов со склада
-            List<Chef_Helper_API.Warehouse> warehouseIngredients = _dbContext.Warehouse.ToList();
+            List<Chef_Helper_API.Models.Warehouse> warehouseIngredients = _dbContext.Warehouse.ToList();
 
             foreach (var warehouseIngredient in warehouseIngredients)
             {
@@ -204,6 +206,7 @@ namespace Chef_Helper_API.Controllers
 
             return availableQuantity;
         }
+
 
 
 

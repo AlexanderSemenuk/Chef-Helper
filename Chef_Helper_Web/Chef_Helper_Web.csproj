@@ -19,4 +19,8 @@
     <ProjectReference Include="..\Chef_Helper_API\Chef_Helper_API.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\" />
+  </ItemGroup>
+
 </Project>

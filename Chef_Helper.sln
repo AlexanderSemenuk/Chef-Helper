@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chef_Helper_API", "Chef_Helper_API\Chef_Helper_API.csproj", "{9E08AAFB-C962-48AD-8A7B-274CFD4E133F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chef_Helper_API", "Chef_Helper_API\Chef_Helper_API.csproj", "{9E08AAFB-C962-48AD-8A7B-274CFD4E133F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chef_Helper_Web", "Chef_Helper_Web\Chef_Helper_Web.csproj", "{9364CD29-0CD1-4BB0-AEA4-F37A7D502FFA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chef_Helper_Web", "Chef_Helper_Web\Chef_Helper_Web.csproj", "{9364CD29-0CD1-4BB0-AEA4-F37A7D502FFA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

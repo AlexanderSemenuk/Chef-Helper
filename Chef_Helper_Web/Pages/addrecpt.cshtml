@@ -1,0 +1,32 @@
+﻿@page
+@model addrecptModel
+@{
+    ViewData["Title"] = "addrecpt";
+}
+
+<main class="main-container">
+    <div class="clamp">
+        <div class="clamp-inner">
+        </div>
+    </div>
+    <div class="sheet">
+        <p class="top-name">ADD RECPT</p>
+        <hr class="underline">
+        <div class="add_form">
+        <p>Название рецепта</p>
+        <input></input>
+        <p>Нужные ингридиенты</p>
+        <input></input>
+        <p>Калорийность</p>
+        <input></input>
+            <p>Вес</p>
+        <input></input>
+         <button>Добавить</button>
+        </div>
+        <hr class="underline">
+    </div>
+    <div class="button-container">
+        <button><a asp-area="" asp-page="/Warehouse">Склад</a></button>
+        <button><a asp-area="" asp-page="/Index">Рецепты</a></button>
+    </div>
+</main>

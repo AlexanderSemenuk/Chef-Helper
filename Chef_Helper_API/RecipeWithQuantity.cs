@@ -4,5 +4,6 @@
     {
         public string RecipeName { get; set; }
         public int AvailableQuantity { get; set; }
+
     }
 }

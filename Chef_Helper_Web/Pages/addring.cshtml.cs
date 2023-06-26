@@ -1,20 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace WebApplication1.Pages
+namespace Chef_Helper_Web.Pages
 {
-    public class IndexModel : PageModel
+    public class addingModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly ILogger<addingModel> _logger;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public addingModel(ILogger<addingModel> logger)
         {
             _logger = logger;
         }
 
         public void OnGet()
         {
-
         }
     }
 }

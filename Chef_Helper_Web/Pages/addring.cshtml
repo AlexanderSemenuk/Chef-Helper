@@ -1,0 +1,30 @@
+﻿@page
+@model addingModel
+@{
+    ViewData["Title"] = "addingModel";
+}
+
+<main class="main-container1">
+    <div class="clamp">
+        <div class="clamp-inner">
+        </div>
+    </div>
+    <div class="sheet">
+        <p class="top-name">ADD INGREDIENT</p>
+        <hr class="underline">
+        <div class="add_form">
+            <p>Название ингредиента</p>
+            <input id="ingredientNameInput" type="text"></input>
+            <p>Количество</p>
+            <input id="ingredientQuantityInput" type="text"></input>
+            <button onclick="getData()">Добавить</button>
+        </div>
+        <hr class="underline">
+    </div>
+    <div class="button-container">
+        <button><a asp-area="" asp-page="/Warehouse">Склад</a></button>
+        <button><a asp-area="" asp-page="/Index">Рецепты</a></button>
+    </div>
+</main>
+
+

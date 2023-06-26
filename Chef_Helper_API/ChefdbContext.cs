@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Chef_Helper_API.Models;
 
 namespace Chef_Helper_API;
 
@@ -24,7 +25,7 @@ public partial class ChefdbContext : DbContext
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CHEFDB;Integrated Security=True;Encrypt=False;");
+        => optionsBuilder.UseSqlServer("Data Source=DESKTOP-PV4HL9E\\MSSQLSERVER01;Initial Catalog=CHEFDB;Integrated Security=True;Encrypt=False;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
