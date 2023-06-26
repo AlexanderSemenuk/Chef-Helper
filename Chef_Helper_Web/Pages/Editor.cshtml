@@ -1,4 +1,11 @@
 ﻿@page
+@using Chef_Helper_Web.Services
+@inject IRecipesService recipeService;
+@{
+    var recipes = await recipeService.GetRecipes();
+    ViewData["Title"] = "Home page";
+}
+
 <main class="main-container">
     <div class="clamp">
         <div class="clamp-inner">

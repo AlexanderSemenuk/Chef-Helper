@@ -31,7 +31,7 @@ namespace Chef_Helper_Web.Services
         }
         public async Task<List<Recipes>> GetRecipes()
         {
-            return await _httpClient.GetFromJsonAsync<List<Recipes>>("/Recipe");
+            return await _httpClient.GetFromJsonAsync<List<Recipes>>("/Recipes");
         }
         public async Task<Recipes> GetRecipes(string name)
         {
