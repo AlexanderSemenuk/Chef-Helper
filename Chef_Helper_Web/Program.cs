@@ -22,6 +22,7 @@ namespace Helper_Web
             builder.Services.AddScoped<RecipesService>();
             builder.Services.AddHttpClient<IRecipesService, RecipesService>();
             builder.Services.AddScoped<WarehouseService>();
+            builder.Services.AddServerSideBlazor();
             builder.Services.AddHttpClient<IWarehouseService, WarehouseService>();
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7114/") });
             var app = builder.Build();

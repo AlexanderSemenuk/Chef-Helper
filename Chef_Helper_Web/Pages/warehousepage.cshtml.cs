@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Chef_Helper_Web.Pages
 {
-    public class Warehouse : PageModel
+    public class warehousepage : PageModel
     {
-        private readonly ILogger<Warehouse> _logger;
+        private readonly ILogger<warehousepage> _logger;
 
-        public Warehouse(ILogger<Warehouse> logger)
+        public warehousepage(ILogger<warehousepage> logger)
         {
             _logger = logger;
         }
