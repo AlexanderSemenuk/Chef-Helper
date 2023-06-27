@@ -10,6 +10,7 @@ namespace Chef_Helper_Web.Services
         Task <Recipes> Update(string recipeToUpdate, Recipes recipe);
 
         Task<Recipes> Post(Recipes recipe);
+        Task<List<RecipeWithQuantity>> GetRecipesAvailable();
 
         Task Delete(string name);
     }

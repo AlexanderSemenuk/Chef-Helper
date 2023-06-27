@@ -106,7 +106,7 @@ namespace Chef_Helper_API.Controllers
             _dbContext.SaveChanges();
             return Ok();
         }
-        [HttpGet]
+        [HttpGet("/AvailableRecipes")]
         public IActionResult GetRecipesWithAvailableIngredients()
         {
             // Получаем все рецепты

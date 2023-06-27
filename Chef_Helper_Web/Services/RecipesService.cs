@@ -59,9 +59,9 @@ namespace Chef_Helper_Web.Services
             }
         }
 
-        public async Task<List<Recipes>> GetRecipesAvailable()
+        public async Task<List<RecipeWithQuantity>> GetRecipesAvailable()
         {
-            return await _httpClient.GetFromJsonAsync<List<Recipes>>($"/api/Recipes");
+            return await _httpClient.GetFromJsonAsync<List<RecipeWithQuantity>>($"/AvailableRecipes");
         }
 
         public async Task Delete(string recipeName)

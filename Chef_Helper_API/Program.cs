@@ -19,7 +19,6 @@ namespace Chef_Helper_API
             // Add services to the container.
             builder.Services.AddDbContext<ChefdbContext>();
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
